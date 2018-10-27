@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Lexicon</string>
+
+    <!-- Test Ad Ids -->
+    <string name="test_banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="test_interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="test_app_id">ca-app-pub-3940256099942544~3347511713</string>
+
+    <!-- Main Activity -->
+    <string name="cdesc_open_image">Open Image file</string>
+    <string name="cdesc_capture_camera">Capture image from Camera</string>
+    <string name="cdesc_saved_text">Show saved texts</string>
+    <string name="open_image">Tap here to open an image</string>
+    <string name="camera_capture">Tap here to capture from camera</string>
+    <string name="about_developer">About Developer</string>
+    <string name="settings">Settings</string>
+    <string name="saved_text">Saved Texts</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

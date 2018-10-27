@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.MainFragment">
+
+    <!-- Open image -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/open_image_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="2dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:stateListAnimator="@animator/open_lift_on_touch"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_openImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_open_image"
+                android:contentDescription="@string/cdesc_open_image"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_openImage"
+                android:textAlignment="center"
+                android:layout_margin="8dp"
+                android:text="@string/open_image"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!-- Open Camera -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/capture_camera_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:clickable="true"
+        android:stateListAnimator="@animator/camera_lift_on_touch"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_openCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_capture_camera"
+                android:contentDescription="@string/cdesc_capture_camera"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_openCamera"
+                android:textAlignment="center"
+                android:layout_margin="8dp"
+                android:text="@string/camera_capture"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <include layout="@layout/toolbar_main_activity" />
+</LinearLayout>
