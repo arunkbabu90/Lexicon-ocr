@@ -1,9 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.EdgeScreenActivity">
+
+    <!-- Rectangle Crop -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_rectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="50dp"
+        android:background="#00FF80"
+        android:backgroundTint="#00FF80"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_crop_rectangle"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rect_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/rectangle"
+        app:layout_constraintEnd_toStartOf="@+id/fab_rectangle"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toEndOf="@+id/fab_rectangle"
+        app:layout_constraintTop_toBottomOf="@+id/fab_rectangle" />
+
+    <!-- Oval Crop -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_oval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="50dp"
+        app:borderWidth="0dp"
+        android:background="#FF4766"
+        android:backgroundTint="#FF4766"
+        android:src="@drawable/ic_crop_oval"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rect_tv" />
+
+    <TextView
+        android:id="@+id/oval_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/oval"
+        app:layout_constraintEnd_toStartOf="@+id/fab_oval"
+        app:layout_constraintStart_toEndOf="@+id/fab_oval"
+        app:layout_constraintTop_toBottomOf="@+id/fab_oval" />
+
+    <!-- Full Screen -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_fullscreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="50dp"
+        app:borderWidth="0dp"
+        android:background="#8844FF"
+        android:backgroundTint="#8844FF"
+        android:src="@drawable/ic_crop_fullscreen"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oval_tv" />
+
+    <TextView
+        android:id="@+id/fullscreen_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/fullscreen"
+        app:layout_constraintEnd_toStartOf="@+id/fab_fullscreen"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toEndOf="@+id/fab_fullscreen"
+        app:layout_constraintTop_toBottomOf="@+id/fab_fullscreen" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="50dp"
+        app:borderWidth="0dp"
+        android:background="#BCFF00"
+        android:backgroundTint="#BCFF00"
+        android:src="@drawable/ic_crop_camera"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullscreen_tv" />
+
+    <TextView
+        android:id="@+id/camera_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/camera"
+        app:layout_constraintEnd_toStartOf="@+id/fab_camera"
+        app:layout_constraintStart_toEndOf="@+id/fab_camera"
+        app:layout_constraintTop_toBottomOf="@+id/fab_camera" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_gravity="bottom"
+    android:theme="@style/ToolbarTheme">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <Button
+            android:id="@+id/open_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_button_extract"
+            android:paddingEnd="@dimen/padding_button_extract"
+            android:text="@string/open"
+            android:layout_gravity="start"
+            android:background="?attr/selectableItemBackground"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <ImageButton
+            android:id="@+id/crop_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_button_extract"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/crop_or_rotate"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_action_crop_rotate"/>
+
+        <Button
+            android:id="@+id/extract_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_button_extract"
+            android:paddingEnd="@dimen/padding_button_extract"
+            android:text="@string/extract"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackground"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_purple"/>
+
+    </android.support.v7.widget.Toolbar>
+</android.support.design.widget.AppBarLayout>

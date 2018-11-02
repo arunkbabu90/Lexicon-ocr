@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/saved_text_item_card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_saved_text_height"
+        android:layout_marginTop="8dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_saved_text_height"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/item_saved_text_height"
+                android:fontFamily="sans-serif"
+                android:gravity="center|start"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="@dimen/standard_padding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
+                tools:text="This is a sample text. This is a custom long text for the record" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="80dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/cdesc_share_text"
+                android:padding="16dp"
+                android:src="@drawable/ic_action_share"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <!-- The bottom layout which just shows DELETE -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_saved_text_height"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorFadedRed">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:textColor="@android:color/white"
+            android:layout_gravity="end|center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/standard_margin"
+            android:fontFamily="sans-serif"
+            android:background="?attr/selectableItemBackground"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:textColor="@android:color/white"
+            android:layout_gravity="start|center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/standard_margin"
+            android:fontFamily="sans-serif"
+            android:background="?attr/selectableItemBackground"/>
+
+    </FrameLayout>
+
+</FrameLayout>

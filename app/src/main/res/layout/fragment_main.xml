@@ -13,6 +13,7 @@
         android:id="@+id/open_image_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardCornerRadius="0dp"
         app:cardElevation="2dp"
         android:focusable="true"
         android:clickable="true"
@@ -46,6 +47,7 @@
         android:id="@+id/capture_camera_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardCornerRadius="0dp"
         android:focusable="true"
         android:clickable="true"
         android:stateListAnimator="@animator/camera_lift_on_touch"
@@ -70,8 +72,7 @@
                 android:layout_margin="8dp"
                 android:text="@string/camera_capture"/>
         </RelativeLayout>
-
     </android.support.v7.widget.CardView>
 
-    <include layout="@layout/toolbar_main_activity" />
+    <include layout="@layout/toolbar_main_activity"/>
 </LinearLayout>

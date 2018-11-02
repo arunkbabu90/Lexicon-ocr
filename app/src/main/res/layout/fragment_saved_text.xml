@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightGrey"
     tools:context=".fragments.SavedTextFragment">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_saved_texts"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"/>
 
+    <TextView
+        android:id="@+id/tv_fav_no_internet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/err_no_saved_text"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:lineSpacingMultiplier="1.0"
+        android:layout_margin="@dimen/standard_margin"
+        android:textStyle="bold"
+        android:background="?attr/selectableItemBackground"
+        android:textColor="@android:color/darker_gray"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:fontFamily="sans-serif" />
 
 </FrameLayout>

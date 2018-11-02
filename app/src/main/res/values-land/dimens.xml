@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="about_ic_margin_top">20dp</dimen>
+    <dimen name="about_appname_text_size">30sp</dimen>
+    <dimen name="about_dev_text_size">14sp</dimen>
+    <dimen name="about_ver_text_size">14sp</dimen>
+    <dimen name="margin_bottom_extract">60dp</dimen>
+    <dimen name="padding_button_extract">22dp</dimen>
+    <dimen name="height_permission_view_top">100dp</dimen>
+    <dimen name="margin_permission_textview_top">16dp</dimen>
+</resources>

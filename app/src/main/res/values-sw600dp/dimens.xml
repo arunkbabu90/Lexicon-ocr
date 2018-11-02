@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding_main_toolbar_btn">22dp</dimen>
+    <dimen name="item_saved_text_height">120dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="standard_padding">16dp</dimen>
+    <dimen name="about_icon_dimen">300dp</dimen>
+    <dimen name="about_ic_margin_top">80dp</dimen>
+    <dimen name="about_appname_text_size">50sp</dimen>
+    <dimen name="about_dev_text_size">20sp</dimen>
+    <dimen name="about_ver_text_size">20sp</dimen>
+    <dimen name="margin_bottom_extract">60dp</dimen>
+    <dimen name="padding_button_extract">22dp</dimen>
+    <dimen name="height_permission_view_top">200dp</dimen>
+    <dimen name="margin_permission_textview_top">48dp</dimen>
 </resources>
