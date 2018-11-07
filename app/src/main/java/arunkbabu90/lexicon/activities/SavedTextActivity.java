@@ -30,6 +30,5 @@ public class SavedTextActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             getWindow().setStatusBarColor(getColor(R.color.colorPrimaryDark));
         }
-
     }
 }

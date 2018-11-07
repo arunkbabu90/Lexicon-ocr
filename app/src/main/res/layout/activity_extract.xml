@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     tools:context=".activities.ExtractActivity">
 
     <ProgressBar
         android:id="@+id/pb_image_loading"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
@@ -23,7 +24,7 @@
         android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/selected_image_display"
+        android:id="@+id/iv_current_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -32,6 +33,6 @@
         android:layout_marginBottom="@dimen/margin_bottom_extract"
         android:contentDescription="@string/currently_active_image" />
 
-    <include layout="@layout/toolbar_display" />
+    <include layout="@layout/toolbar_extract_activity" />
 
 </FrameLayout>

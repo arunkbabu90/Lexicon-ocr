@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:layout_gravity="bottom"
@@ -27,9 +28,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_button_extract"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/crop_or_rotate"
             android:layout_gravity="center"
-            android:src="@drawable/ic_action_crop_rotate"/>
+            android:src="@drawable/ic_action_crop_rotate"
+            tools:ignore="ContentDescription" />
 
         <Button
             android:id="@+id/extract_button"

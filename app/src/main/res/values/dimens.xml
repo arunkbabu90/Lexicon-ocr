@@ -6,17 +6,20 @@
     <dimen name="standard_padding">16dp</dimen>
     <dimen name="about_icon_dimen">200dp</dimen>
     <dimen name="about_ic_margin_top">120dp</dimen>
-    <dimen name="about_appname_text_size">30sp</dimen>
-    <dimen name="about_dev_text_size">14sp</dimen>
-    <dimen name="about_ver_text_size">14sp</dimen>
     <dimen name="margin_bottom_extract">60dp</dimen>
     <dimen name="padding_button_extract">22dp</dimen>
     <dimen name="height_permission_view_top">200dp</dimen>
     <dimen name="margin_permission_textview_top">48dp</dimen>
+    <dimen name="padding_loading_dialog_text">30dp</dimen>
 
-    <!--
-Refer to App Widget Documentation for margin information
-http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
-    -->
     <dimen name="widget_margin">8dp</dimen>
+
+    <dimen name="about_appname_text_size">30sp</dimen>
+    <dimen name="about_dev_text_size">14sp</dimen>
+    <dimen name="about_ver_text_size">14sp</dimen>
+    <dimen name="medium_text_size">16sp</dimen>
+    <dimen name="default_text_size">14sp</dimen>
+    <dimen name="padding_start_loading_dialog_text">0dp</dimen>
+    <dimen name="text_size_extracted_text">15sp</dimen>
+
 </resources>

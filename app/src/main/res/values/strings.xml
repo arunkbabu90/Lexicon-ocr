@@ -13,6 +13,8 @@
     <string name="about_developer">About Developer</string>
     <string name="settings">Settings</string>
     <string name="saved_text">Saved Texts</string>
+    <string name="camera_err">Sorry! This feature cannot run on your device as it don\'t have a camera</string>
+    <string name="file_err">Unexpected error occurred while creating the File. Please make sure that you have sufficient storage space and try Again</string>
 
     <!-- SavedText Activity -->
     <string name="cdesc_share_text">Share this text</string>
@@ -42,8 +44,23 @@
     <!-- Extract Activity -->
     <string name="currently_active_image">Currently active Image</string>
     <string name="crop_or_rotate">Crop or Rotate</string>
-    <string name="open">OPEN</string>
-    <string name="extract">EXTRACT</string>
+    <string name="rotate">Rotate by 90°</string>
+    <string name="open">Open</string>
+    <string name="extract">Extract</string>
+    <string name="capture">Capture</string>
+    <string name="cancel">Cancel</string>
+    <string name="apply">Apply</string>
+    <string name="extracting_text">Extracting Text…</string>
+    <string name="save">Save</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="exit">Exit</string>
+    <string name="share_with">Share with:</string>
+    <string name="copied_to_clipboard">Copied to Clipboard</string>
+    <string name="err_no_apps_found">Error! No Applications found to share text with</string>
+    <string name="err_no_text_detected">No Text Detected</string>
+    <string name="extract_failed">Extract Failed! The image not have loaded successfully. Please try again</string>
+    <string name="err_dependency_unavailable">OCR Dependencies are not yet available. Please check your internet connection and wait for about 5 minutes. If that\'s not the case then please Update Google Play Services to the latest version</string>
 
     <!-- Permissions Activity -->
     <string name="skip">SKIP</string>
@@ -51,6 +68,26 @@
     <string name="grant_overlay_permission">GRANT OVERLAY PERMISSION</string>
     <string name="overlay_permission_required">Overlay Permission is required for starting Edge Screen; since it needs to float over other apps</string>
 
-    <!-- Widget -->
+    <string name="extremely_long_text">This is an extremely long text
+        \nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long textThis is an extremely long text
+        \nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long textThis is an extremely long text
+        \nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long textThis is an extremely long text
+        \nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
+        End Extremely long text</string>
 
 </resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_extracted_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:paddingBottom="16dp"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/text_size_extracted_text"
+            tools:text="@string/extremely_long_text" />
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:text="@string/save"
+            android:textColor="@android:color/holo_orange_light"
+            android:textAllCaps="true"
+            style="?attr/buttonBarButtonStyle"
+            android:background="?attr/selectableItemBackground"/>
+        <Button
+            android:id="@+id/btn_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:text="@string/copy"
+            android:textColor="@android:color/holo_green_light"
+            android:textAllCaps="true"
+            style="?attr/buttonBarButtonStyle"
+            android:background="?attr/selectableItemBackground"/>
+        <Button
+            android:id="@+id/btn_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:text="@string/share"
+            android:textColor="@android:color/holo_blue_light"
+            android:textAllCaps="true"
+            style="?attr/buttonBarButtonStyle"
+            android:background="?attr/selectableItemBackground"/>
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:text="@string/exit"
+            android:textColor="@android:color/black"
+            android:textAllCaps="true"
+            style="?attr/buttonBarButtonStyle"
+            android:background="?attr/selectableItemBackground"/>
+    </LinearLayout>
+
+</LinearLayout>

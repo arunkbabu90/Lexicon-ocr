@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.TooltipCompat;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -42,32 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             getWindow().setStatusBarColor(getColor(R.color.colorPrimaryDark));
         }
 
-        // TODO: Should be deleted
-        mAbout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                startActivity(new Intent(MainActivity.this, EdgeScreenActivity.class));
-                return true;
-            }
-        });
-
-        // TODO: Should be deleted
-        mSettingsButton.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                startActivity(new Intent(MainActivity.this, PermissionsActivity.class));
-                return true;
-            }
-        });
-
-        // TODO: Should be deleted
-        mSavedTextButton.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                startActivity(new Intent(MainActivity.this, EdgeCropActivity.class));
-                return true;
-            }
-        });
+        TooltipCompat.setTooltipText(mSettingsButton, getString(R.string.settings));
+        TooltipCompat.setTooltipText(mAbout, getString(R.string.about));
+        TooltipCompat.setTooltipText(mSavedTextButton, getString(R.string.saved_text));
     }
 
 
