@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:allowBackup="true"
@@ -54,11 +55,19 @@
             android:name=".activities.EdgeScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:excludeFromRecents="true"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:theme="@style/TransparentFullscreenTheme" />
+
         <activity
             android:name=".activities.ExtractActivity"
-            android:theme="@style/ExtractActivityTheme" />
+            android:theme="@style/ExtractActivityTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".activities.PermissionsActivity"
             android:theme="@style/PermissionActivityTheme" />
@@ -72,6 +81,7 @@
 
         <service
             android:name=".services.EdgeScreenService"
+            android:configChanges="orientation"
             android:enabled="true"
             android:exported="false" />
         <service
@@ -79,11 +89,15 @@
             android:enabled="true"
             android:exported="false" />
 
-        <receiver android:name=".SavedTextsWidget">
+        <service android:name=".widget.ListWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+
+        <service android:name=".widget.UpdateListService" />
+
+        <receiver android:name=".widget.SavedTextsProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/saved_texts_widget_info" />

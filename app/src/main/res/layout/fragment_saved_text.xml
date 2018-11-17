@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/colorLightGrey"
     tools:context=".fragments.SavedTextFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_saved_texts"
-        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
         android:visibility="gone"
-        android:layout_height="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutAnimation="@anim/layout_animation_saved_text"/>
 
     <TextView
         android:id="@+id/tv_fav_no_internet"
@@ -29,4 +32,4 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         android:fontFamily="sans-serif" />
 
-</FrameLayout>
+</LinearLayout>

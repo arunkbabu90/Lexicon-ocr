@@ -1,4 +1,6 @@
 <resources>
+    <string name="err_default">Something went wrong!</string>
+
     <!-- About -->
     <string name="app_name">Lexicon</string>
     <string name="app_version">v1.0 rc1</string>
@@ -20,6 +22,9 @@
     <string name="cdesc_share_text">Share this text</string>
     <string name="delete">DELETE</string>
     <string name="err_no_saved_text">Texts once saved will appear here</string>
+    <string name="text_saved">Text Saved</string>
+    <string name="text_deleted">Text Deleted</string>
+    <string name="undo">Undo</string>
 
     <!-- Settings Activity -->
     <string name="enable_edge">Enable Edge</string>
@@ -29,17 +34,12 @@
     <string name="licenses">Licenses</string>
     <string name="about">About</string>
     <string name="about_info">About this App and Developer</string>
+    <string name="err_gpu_incompatible">In case if the image appears distorted when capturing screen. Then this GPU isn\'t supported. In that case, please try to manually take a screenshot and share it with this app</string>
 
     <!-- Test Ad Ids -->
     <string name="test_banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="test_interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="test_app_id">ca-app-pub-3940256099942544~3347511713</string>
-
-    <!-- Edge Screen -->
-    <string name="rectangle">Rectangle</string>
-    <string name="oval">Oval</string>
-    <string name="fullscreen">Full Screen</string>
-    <string name="camera">Camera</string>
 
     <!-- Extract Activity -->
     <string name="currently_active_image">Currently active Image</string>
@@ -90,4 +90,28 @@
         This is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\nThis is an extremely long text\n
         End Extremely long text</string>
 
+    <!-- Edge Screen Activity -->
+    <string name="rectangle">Rectangle</string>
+    <string name="oval">Oval</string>
+    <string name="fullscreen">Full Screen</string>
+    <string name="camera">Camera</string>
+    <string name="permission_denied">Permission Denied</string>
+
+    <!-- Tutorial -->
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="tr_title_1">Tired of Typing?</string>
+    <string name="tr_desc_1">Lexicon is an optical character recognition application in which you can extract printed text from images.You can use your camera to take a photo or open an image from your storage</string>
+    <string name="tr_title_2">Enable Edge Screen</string>
+    <string name="tr_desc_2">Edge screen is a floating widget used to extract text from any screen on your device\n\nTo Enable: Go to Settings and Turn on "Enable Edge" switch</string>
+    <string name="tr_title_3">Save your Text</string>
+    <string name="tr_desc_3">Save the extracted text. So don\'t bother about losing your favourite passages</string>
+    <string name="tr_title_4">Share Text</string>
+    <string name="tr_desc_4">Share the extracted with third party apps. So that you can edit or make changes there</string>
+    <string name="tap_here_to_open_settings">Tap here to Open Settings</string>
+    <string name="success">Success</string>
+    <string name="edge_activation_success">Edge Screen successfully enabled. Swipe (Right-to-Left) on the transparent bar to reveal Edge Screen\n\nClick Next to continue</string>
+
+    <!-- Widgets -->
+    <string name="no_saved_texts_found">No saved texts found!</string>"
 </resources>

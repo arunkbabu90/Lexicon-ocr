@@ -22,6 +22,10 @@ import android.widget.Toast;
 
 import arunkbabu90.lexicon.Constants;
 import arunkbabu90.lexicon.R;
+import arunkbabu90.lexicon.database.AppExecutor;
+import arunkbabu90.lexicon.database.Text;
+import arunkbabu90.lexicon.database.TextDatabase;
+import arunkbabu90.lexicon.widget.UpdateListService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,10 +40,15 @@ public class ExtractDialog extends DialogFragment implements View.OnClickListene
     private static String mText;
     private static int mDisplayWidth;
     private Context mContext;
+    private static int mButtonVisibility;
 
-    public static ExtractDialog newInstance(String bodyText, int displayWidth) {
+    public static final int BUTTON_VISIBILITY_ALL = 1;
+    public static final int BUTTON_VISIBILITY_NO_SAVE = 2;
+
+    public static ExtractDialog newInstance(String bodyText, int displayWidth, int buttonVisibility) {
         mText = bodyText;
         mDisplayWidth = displayWidth;
+        mButtonVisibility = buttonVisibility;
 
         return new ExtractDialog();
     }
@@ -78,8 +87,13 @@ public class ExtractDialog extends DialogFragment implements View.OnClickListene
             mCopyButton.setVisibility(View.INVISIBLE);
             mShareButton.setVisibility(View.INVISIBLE);
             mExtractedTextView.setText(getString(R.string.err_no_text_detected));
-        } else {
+        } else if (mButtonVisibility == BUTTON_VISIBILITY_ALL){
             mSaveButton.setVisibility(View.VISIBLE);
+            mCopyButton.setVisibility(View.VISIBLE);
+            mShareButton.setVisibility(View.VISIBLE);
+            mExtractedTextView.setText(mText);
+        } else if (mButtonVisibility == BUTTON_VISIBILITY_NO_SAVE) {
+            mSaveButton.setVisibility(View.GONE);
             mCopyButton.setVisibility(View.VISIBLE);
             mShareButton.setVisibility(View.VISIBLE);
             mExtractedTextView.setText(mText);
@@ -115,7 +129,18 @@ public class ExtractDialog extends DialogFragment implements View.OnClickListene
      * Saves the text to a database
      */
     private void saveText() {
-        Toast.makeText(mContext, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
+        AppExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                TextDatabase db = TextDatabase.getInstance(getContext());
+                Text text = new Text(System.currentTimeMillis(), mText);
+                db.textDao().insertText(text);
+
+                // Update the widget with new data
+                UpdateListService.startActionUpdateWidget(mContext);
+            }
+        });
+        Toast.makeText(mContext, R.string.text_saved, Toast.LENGTH_SHORT).show();
     }
 
     /**

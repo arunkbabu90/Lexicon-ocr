@@ -9,8 +9,8 @@ import android.view.View;
 
 import arunkbabu90.lexicon.R;
 
-public class SavedTextActivity extends AppCompatActivity {
-
+public class SavedTextActivity extends AppCompatActivity
+{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

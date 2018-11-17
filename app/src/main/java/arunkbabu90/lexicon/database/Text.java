@@ -3,10 +3,13 @@ package arunkbabu90.lexicon.database;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 @Entity(tableName = "saved_texts")
-public class Text {
-    @PrimaryKey
+public class Text implements Parcelable
+{
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     @ColumnInfo(name = "timestamp")
@@ -14,6 +17,29 @@ public class Text {
 
     @ColumnInfo(name = "saved_text")
     private String savedText;
+
+    public Text(long timestamp, String savedText) {
+        this.timestamp = timestamp;
+        this.savedText = savedText;
+    }
+
+    protected Text(Parcel in) {
+        id = in.readInt();
+        timestamp = in.readLong();
+        savedText = in.readString();
+    }
+
+    public static final Creator<Text> CREATOR = new Creator<Text>() {
+        @Override
+        public Text createFromParcel(Parcel in) {
+            return new Text(in);
+        }
+
+        @Override
+        public Text[] newArray(int size) {
+            return new Text[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -37,5 +63,17 @@ public class Text {
 
     public void setSavedText(String savedText) {
         this.savedText = savedText;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeLong(timestamp);
+        dest.writeString(savedText);
     }
 }

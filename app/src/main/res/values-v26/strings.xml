@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="edge_notification_title">Edge Screen Running</string>
+    <string name="edge_notification_desc">Keep this notification to prevent Edge Screen from being killed by system</string>
+    <string name="edge_notification_channel_desc">Prevents Edge Screen from being automatically killed by system</string>
+    <string name="err_edge_notification_channel">Unable to create notification channel</string>
+</resources>

@@ -11,8 +11,11 @@ import java.util.List;
 
 @Dao
 public interface TextDao {
-    @Query("SELECT * FROM saved_texts")
+    @Query("SELECT * FROM saved_texts ORDER BY timestamp DESC")
     LiveData<List<Text>> loadAllTexts();
+
+    @Query("SELECT * FROM saved_texts ORDER BY timestamp DESC")
+    List<Text> loadTexts();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertText(Text text);

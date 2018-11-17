@@ -63,29 +63,26 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
     private boolean mIsCapturedFromScreen;
     private boolean mIsSharedFromGallery;
     private boolean mIsCropButtonPressedBefore;
+    private boolean mIsCroppedOrRotated;
     private int mDisplayWidth;
     private Target mTarget;
     private StringBuilder mOcrStringBuilder;
     private DialogFragment mExtractingDialog;
     private DialogFragment mExtractedTextDialog;
-    private DialogFragment mErrorDialog;
     private Bitmap mLoadedBitmap;
-    private String mCameraFilePath;
+    private String mCapturedFilePath;
     private String mExtractedText;
     private Uri mCurrentImageUri;
 
     private String cTextCache;
     private String cOpenButtonText;
     private int cShortAnimationDuration;
-    private int cMediumAnimationDuration;
     private int cPreviousRotation = 0;
-    private int cClicks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extract);
-
         ButterKnife.bind(this);
 
         mLoadingCircle.setVisibility(View.VISIBLE);
@@ -96,35 +93,49 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
 
         // Cache the short/medium animation time for animating views
         cShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
-        cMediumAnimationDuration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
 
         // Set the navigation bar color to grey
         getWindow().setNavigationBarColor(getResources().getColor(R.color.colorDeepGrey));
 
+        // Get the intents
         mIsOpenedFromSAF = getIntent().getBooleanExtra(Constants.OPENED_FROM_SAF_KEY, false);
         mIsCapturedFromCamera = getIntent().getBooleanExtra(Constants.CAPTURED_FROM_CAMERA_KEY, false);
+        mIsCapturedFromScreen = getIntent().getBooleanExtra(Constants.CAPTURED_FROM_SCREEN_KEY, false);
+
+        // Capture & handle external image share intents produced by other apps
+        Intent externalIntent = getIntent();
+        String action = externalIntent.getAction();
+        String type = externalIntent.getType();
+        Uri externalImageUri;
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                mOpenButton.setText(R.string.close);
+                externalImageUri = externalIntent.getParcelableExtra(Intent.EXTRA_STREAM);
+                if (externalImageUri != null) {
+                    mCurrentImageUri = externalImageUri;
+                    mIsSharedFromGallery = true;
+                }
+            }
+        }
 
         // If the image is opened from Storage Access Framework
         if (mIsOpenedFromSAF) {
             mCurrentImageUri = Uri.parse(getIntent().getStringExtra(Constants.IMAGE_URI_KEY));
-            mCameraFilePath = Constants.NULL;
+            mCapturedFilePath = Constants.NULL;
             mOpenButton.setText(getString(R.string.open));
         }
 
         // If the image is captured from camera
         if (mIsCapturedFromCamera) {
             mCurrentImageUri = Uri.parse(getIntent().getStringExtra(Constants.PHOTO_URI_KEY));
-            mCameraFilePath = getIntent().getStringExtra(Constants.CAPTURED_FILE_PATH_KEY);
+            mCapturedFilePath = getIntent().getStringExtra(Constants.CAPTURED_FILE_PATH_KEY);
             mOpenButton.setText(R.string.capture);
         }
 
         // If the image is captured using Edge Screen
         if (mIsCapturedFromScreen) {
-            mOpenButton.setText(R.string.close);
-        }
-
-        // If the image is shared from external gallery applications
-        if (mIsSharedFromGallery) {
+            mCurrentImageUri = Uri.parse(getIntent().getStringExtra(Constants.SCR_CAPTURED_IMG_URI_KEY));
+            mCapturedFilePath = getIntent().getStringExtra(Constants.SCR_CAPTURED_IMG_ABS_PATH_KEY);
             mOpenButton.setText(R.string.close);
         }
 
@@ -166,6 +177,11 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
         if (mLoadedBitmap == null) {
             Toast.makeText(this, R.string.extract_failed, Toast.LENGTH_LONG).show();
             return;
+        }
+
+        if (mIsCroppedOrRotated) {
+            cTextCache = null;
+            mIsCroppedOrRotated = false;
         }
 
         // If there is text inside the text cache; display it
@@ -247,7 +263,7 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
                     imageFile = createImageCacheFile();
                     Uri imageUri = FileProvider.getUriForFile(this, Constants.FILE_PROVIDER_AUTHORITY, imageFile);
                     mCurrentImageUri = imageUri;
-                    mCameraFilePath = imageFile.getAbsolutePath();
+                    mCapturedFilePath = imageFile.getAbsolutePath();
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                     startActivityForResult(takePictureIntent, Constants.REQUEST_CODE_CAMERA_EXTRACT);
                 } catch (IOException e) {
@@ -382,6 +398,7 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
      * Applies the cropped image back to image view
      */
     private void applyCrop() {
+        mIsCroppedOrRotated = true;
         mCropView.setRotatedDegrees(cPreviousRotation);
         mLoadedBitmap = Bitmap.createBitmap(mCropView.getCroppedImage());
         mImageView.setImageBitmap(mLoadedBitmap);
@@ -394,7 +411,7 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
      * @param extractedText The text to be displayed in the dialog fragment
      */
     private void showExtractedTextDialog(String extractedText) {
-        mExtractedTextDialog = ExtractDialog.newInstance(extractedText, mDisplayWidth);
+        mExtractedTextDialog = ExtractDialog.newInstance(extractedText, mDisplayWidth, ExtractDialog.BUTTON_VISIBILITY_ALL);
         mExtractedTextDialog.show(getSupportFragmentManager(), Constants.EXTRACTED_TEXT_DIALOG_TAG);
     }
 
@@ -403,8 +420,8 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
      * @param errorMessage The error message to be displayed
      */
     private void showErrorDialog(String errorMessage) {
-        mErrorDialog = ErrorDialog.newInstance(errorMessage, mDisplayWidth);
-        mErrorDialog.show(getSupportFragmentManager(), Constants.ERROR_DIALOG_TAG);
+        ErrorDialog.newInstance(errorMessage, mDisplayWidth)
+                .show(getSupportFragmentManager(), Constants.ERROR_DIALOG_TAG);
     }
 
 
@@ -415,10 +432,10 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
      */
     private File createImageCacheFile() throws IOException {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.UK).format(new Date());
-            String prefix = "JPEG_" + timeStamp + "_";
+            String prefix = "PNG_" + timeStamp + "_";
             File directory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
-            return File.createTempFile(prefix, ".jpg", directory);
+            return File.createTempFile(prefix, Constants.IMAGE_FORMAT_PNG, directory);
     }
 
     /**
@@ -435,8 +452,8 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
      * @param filePath The path of the file in which all files in the directory needs to be deleted (can include path separators)
      */
     private void deleteAllFiles(String filePath) {
-        if (mIsCapturedFromCamera && !mCameraFilePath.equals(Constants.NULL)) {
-            int lastIndex = mCameraFilePath.lastIndexOf("/");
+        if ((mIsCapturedFromCamera || mIsCapturedFromScreen) && !mCapturedFilePath.equals(Constants.NULL)) {
+            int lastIndex = mCapturedFilePath.lastIndexOf("/");
             filePath = filePath.substring(0, lastIndex);
             File file = new File(filePath);
             boolean isDeleted = false;
@@ -514,17 +531,21 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId())
         {
             case R.id.open_button:
-                if (!mIsCropButtonPressedBefore) {
-                    // Crop mode is deactivated; so normal button behaviours will be enabled
-                    openCameraOrFileOrClose();
-                } else {
+                if (mIsCropButtonPressedBefore) {
                     // Crop Mode is activated so this button becomes "CANCEL" Button
                     // So deactivate crop mode on click
                     deactivateCropMode();
+                } else if (mIsCapturedFromScreen || mIsSharedFromGallery) {
+                    // Image is captured using Edge Screen so this button becomes "CLOSE" Button
+                    //  So close the activity on click
+                    finish();
+                } else {
+                    // Crop mode is deactivated & img is not captured from screen;
+                    //  so normal button behaviours will be enabled
+                    openCameraOrFileOrClose();
                 }
                 break;
             case R.id.crop_button:
@@ -571,7 +592,7 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         // Delete the file captured from Camera on Exit.
-        deleteAllFiles(mCameraFilePath);
+        deleteAllFiles(mCapturedFilePath);
 
         mExtractedText = null;
         cTextCache = null;

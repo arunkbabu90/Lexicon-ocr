@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorActivatorTransparent">#10000000</color>
+    <color name="colorActivatorPressed">#99ffffff</color>
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#2196F3</color>
     <color name="colorLightGrey">#F5F5F5</color>
     <color name="colorFadedRed">#FF5252</color>
     <color name="colorDeepGrey">#212121</color>
+    <color name="colorGreyedText">#616161</color>
+    <color name="colorDisabled">#BDBDBD</color>
+    <color name="vibrantGreen">#00e676</color>
+    <color name="lightBlue">#42a5f5</color>
+    <color name="vibrantBlue">#2979ff</color>
+    <color name="vibrantRed">#ff1744</color>
+    <color name="vibrantYellow">#FFEF68</color>
+    <color name="vibrantAmber">#ffc400</color>
+    <color name="vibrantOrange">#ff9100</color>
 </resources>

@@ -131,9 +131,9 @@ public class MainFragment extends Fragment implements View.OnClickListener
     private File createImageCacheFile() throws IOException {
         if (getActivity() != null) {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.UK).format(new Date());
-            String prefix = "JPEG_" + timeStamp + "_";
+            String prefix = "PNG_" + timeStamp + "_";
             File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            return File.createTempFile(prefix, ".jpg", directory);
+            return File.createTempFile(prefix, Constants.IMAGE_FORMAT_PNG, directory);
         }
         return null;
     }

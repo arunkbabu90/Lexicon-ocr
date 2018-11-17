@@ -80,6 +80,7 @@
             android:paddingBottom="30dp">
 
             <TextView
+                android:id="@+id/tv_launch_tr_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -88,6 +89,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_launch_tr_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -112,6 +114,7 @@
             android:paddingBottom="30dp">
 
             <TextView
+                android:id="@+id/tv_license_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -120,6 +123,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_license_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -144,6 +148,7 @@
             android:paddingBottom="30dp">
 
             <TextView
+                android:id="@+id/tv_about_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -152,6 +157,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_about_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"

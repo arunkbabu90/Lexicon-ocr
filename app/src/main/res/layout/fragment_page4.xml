@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/vibrantAmber"
+    tools:context=".tutorials.Page1Fragment">
+
+    <ImageView
+        android:id="@+id/iv_tutorial_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="100dp"
+        android:src="@drawable/ic_share_big"
+        tools:ignore="ContentDescription" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/standard_margin"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/tv_tutorial_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/tutorial_title_text_size"
+            android:textStyle="bold"
+            android:text="@string/tr_title_4" />
+
+        <TextView
+            android:id="@+id/tv_tutorial_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_below="@id/tv_tutorial_title"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/tutorial_desc_text_size"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            android:text="@string/tr_desc_4" />
+    </RelativeLayout>
+</LinearLayout>

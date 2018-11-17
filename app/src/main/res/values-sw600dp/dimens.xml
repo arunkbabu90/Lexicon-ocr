@@ -6,7 +6,7 @@
     <dimen name="standard_padding">16dp</dimen>
     <dimen name="about_icon_dimen">300dp</dimen>
     <dimen name="about_ic_margin_top">80dp</dimen>
-    <dimen name="margin_bottom_extract">60dp</dimen>
+    <dimen name="margin_bottom_extract">38dp</dimen>
     <dimen name="padding_button_extract">22dp</dimen>
     <dimen name="height_permission_view_top">200dp</dimen>
     <dimen name="margin_permission_textview_top">48dp</dimen>
@@ -15,9 +15,11 @@
     <dimen name="about_appname_text_size">50sp</dimen>
     <dimen name="about_dev_text_size">20sp</dimen>
     <dimen name="about_ver_text_size">20sp</dimen>
-    <dimen name="medium_text_size">22sp</dimen>
-    <dimen name="default_text_size">20sp</dimen>
+    <dimen name="medium_text_size">20sp</dimen>
+    <dimen name="default_text_size">18sp</dimen>
     <dimen name="padding_start_loading_dialog_text">20dp</dimen>
     <dimen name="text_size_extracted_text">19sp</dimen>
+    <dimen name="saved_text_size">18sp</dimen>
+    <dimen name="tutorial_title_text_size">22sp</dimen>
 
 </resources>

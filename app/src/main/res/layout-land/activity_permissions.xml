@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".activities.PermissionsActivity">
 
     <android.support.constraint.ConstraintLayout
-        style="@style/PermissionActivityTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".activities.PermissionsActivity">
+        android:background="@android:color/holo_blue_light"
+        style="@style/PermissionActivityTheme">
 
         <View
             android:id="@+id/view"
@@ -56,21 +57,10 @@
             android:id="@+id/btn_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="?attr/selectableItemBackground"
-            android:text="@string/skip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btn_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="?attr/selectableItemBackground"
-            android:text="@string/close"
+            android:text="@string/skip"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

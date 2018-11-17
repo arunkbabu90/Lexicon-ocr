@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/vibrantBlue"
+    tools:context=".tutorials.Page1Fragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    <Button
+        android:id="@+id/btn_tr_open_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="30dp"
+        android:background="@color/vibrantYellow"
+        android:textColor="@android:color/black"
+        android:text="@string/tap_here_to_open_settings"
+        tools:ignore="ContentDescription"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/standard_margin"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/tv_tutorial_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/tutorial_title_text_size"
+            android:textStyle="bold"
+            android:text="@string/tr_title_2" />
+
+        <TextView
+            android:id="@+id/tv_tutorial_desc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_below="@id/tv_tutorial_title2"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/tutorial_desc_text_size"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            android:text="@string/tr_desc_2" />
+    </RelativeLayout>
+</LinearLayout>
