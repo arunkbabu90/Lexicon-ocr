@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import arunkbabu90.lexicon.Constants;
 import arunkbabu90.lexicon.R;
 import arunkbabu90.lexicon.services.EdgeScreenService;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.tbtn_settings) ImageButton mSettingsButton;
     @BindView(R.id.tbtn_saved_text) ImageButton mSavedTextButton;
     @BindView(R.id.tbtn_about) ImageButton mAbout;
+    @BindView(R.id.banner_adView) AdView mAdView;
 
     private SharedPreferences mSharedPreferences;
 
@@ -32,6 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        // Initialize AdMob
+        MobileAds.initialize(this, getString(R.string.test_app_id));
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         mAbout.setOnClickListener(this);
         mSettingsButton.setOnClickListener(this);
@@ -61,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         // Make the navigation bar white and icons grey on Oreo and above
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             getWindow().getDecorView().setSystemUiVisibility(
                     WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
             getWindow().setNavigationBarColor(getColor(R.color.colorPrimaryDark));
@@ -71,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             getWindow().setStatusBarColor(getColor(R.color.colorPrimaryDark));
+        } else {
+            getWindow().setStatusBarColor(getResources().getColor(android.R.color.black));
         }
 
         TooltipCompat.setTooltipText(mSettingsButton, getString(R.string.settings));

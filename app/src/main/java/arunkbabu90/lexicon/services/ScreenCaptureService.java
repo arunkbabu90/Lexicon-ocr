@@ -41,6 +41,9 @@ import arunkbabu90.lexicon.activities.ExtractActivity;
 @SuppressLint("NewApi")
 public class ScreenCaptureService extends Service
 {
+    private final int CAPTURE_FLAGS =
+            DisplayManager.VIRTUAL_DISPLAY_FLAG_OWN_CONTENT_ONLY
+                    | DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC;
     private int mDisplayWidth;
     private int mDisplayHeight;
     private int mDisplayDensity;
@@ -55,10 +58,6 @@ public class ScreenCaptureService extends Service
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
-        final int CAPTURE_FLAGS =
-                DisplayManager.VIRTUAL_DISPLAY_FLAG_OWN_CONTENT_ONLY
-                | DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC;
 
         mDisplayDensity = intent.getIntExtra(Constants.SCR_DENSITY_KEY, 0);
         mDisplayHeight = intent.getIntExtra(Constants.SCR_HEIGHT_KEY, 0);
@@ -118,7 +117,6 @@ public class ScreenCaptureService extends Service
             // The black margins/bands seem to be captured along with the screen
             // So it needs to be removed
             Bitmap cropped = RemoveBlackBands.trim(bitmap);
-
             bitmap.recycle();
 
             Uri imageURI = null;

@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_saved_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp">
@@ -63,7 +62,6 @@
 
     <!-- The bottom layout which just shows DELETE -->
     <FrameLayout
-        android:id="@+id/saved_text_card_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_saved_text_height"
         android:background="@color/colorFadedRed">

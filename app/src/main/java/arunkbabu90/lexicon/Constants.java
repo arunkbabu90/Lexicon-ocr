@@ -18,7 +18,6 @@ public class Constants
     public static final int REQUEST_CODE_CAST_PERMISSION = 6;
     public static final int REQUEST_CODE_CAMERA_EDGE = 7;
     public static final int REQUEST_CODE_DRAWOVER_PERMISSION = 8;
-    public static final int REQUEST_CODE_WIDGET_PENDING_INTENT = 300;
 
     public static final String RESULT_CODE_MEDIA_PROJECTION = "media_projection_request_code";
     public static final String RESULT_INTENT_MEDIA_PROJECTION = "media_projection_result_intent";
@@ -61,4 +60,5 @@ public class Constants
 
     public static final String IMAGE_FORMAT_PNG = ".png";
 
+    public static final String LICENSE_PATH = "file:///android_asset/Licenses.html";
 }

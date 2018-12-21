@@ -38,6 +38,7 @@ public class EdgeCropActivity extends AppCompatActivity
     @BindView(R.id.fab_edge_crop) FloatingActionButton mFabCropDone;
     @BindView(R.id.crop_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
 
+    private Target mTarget;
     private Bitmap mCroppedImage;
     private Bitmap mLoadedBitmap;
     private Uri mSourcePath;
@@ -64,7 +65,7 @@ public class EdgeCropActivity extends AppCompatActivity
         mSourcePath = Uri.parse(getIntent().getStringExtra(Constants.SCR_CAPTURED_IMG_URI_KEY));
 
         // Load the bitmap into the crop view
-        Target target = new Target() {
+        mTarget = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 mLoadedBitmap = bitmap;
@@ -73,12 +74,14 @@ public class EdgeCropActivity extends AppCompatActivity
             }
 
             @Override
-            public void onBitmapFailed(Exception e, Drawable errorDrawable) { }
+            public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+                Toast.makeText(EdgeCropActivity.this, getString(R.string.err_default), Toast.LENGTH_SHORT).show();
+            }
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) { }
         };
-        Picasso.get().load(mSourcePath).into(target);
+        Picasso.get().load(mSourcePath).into(mTarget);
 
         // Turns ON Guidelines in the preferred crop shape
         mCropView.setGuidelines(CropImageView.Guidelines.ON_TOUCH);

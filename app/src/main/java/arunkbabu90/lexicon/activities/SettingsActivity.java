@@ -14,6 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import arunkbabu90.lexicon.Constants;
 import arunkbabu90.lexicon.R;
 import arunkbabu90.lexicon.dialogs.ErrorDialog;
@@ -34,11 +38,13 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @BindView(R.id.tv_license_desc) TextView mLicenseTrDesc;
     @BindView(R.id.tv_about_title) TextView mAboutTitle;
     @BindView(R.id.tv_about_desc) TextView mAboutDesc;
+    @BindView(R.id.settings_banner_adView) AdView mAdView;
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mPrefEditor;
-    private boolean mIsPermissionDenied;
     private int mDisplayWidth;
+    private boolean mIsPermissionDenied;
+    private boolean mIsTutorialMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +66,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         mLaunchTutorialView.setOnClickListener(this);
 
         // Disable all views other than the Enable Edge Switch in tutorial mode
-        boolean tutorialMode = getIntent().getBooleanExtra(Constants.IS_TUTORIAL_MODE_KEY, false);
-        if (tutorialMode) {
+        mIsTutorialMode = getIntent().getBooleanExtra(Constants.IS_TUTORIAL_MODE_KEY, false);
+        if (mIsTutorialMode) {
             mLaunchTrTitle.setTextColor(getResources().getColor(R.color.colorDisabled));
             mLaunchTrDesc.setTextColor(getResources().getColor(R.color.colorDisabled));
 
@@ -84,14 +90,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         // Only show the up action if it's not in tutorial mode
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            if (!tutorialMode)
+            if (!mIsTutorialMode)
                 ab.setDisplayHomeAsUpEnabled(true);
             else
                 ab.setDisplayHomeAsUpEnabled(false);
         }
 
         // Make the navigation bar white and icons grey on Oreo and above
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             getWindow().getDecorView().setSystemUiVisibility(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS
                     | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
             getWindow().setNavigationBarColor(getColor(R.color.colorPrimaryDark));
@@ -101,6 +107,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             getWindow().setStatusBarColor(getColor(R.color.colorPrimaryDark));
+        } else {
+            getWindow().setStatusBarColor(getResources().getColor(android.R.color.black));
         }
 
         boolean edgeSwitchON = mSharedPreferences.getBoolean(Constants.PREF_EDGE_SWITCH_STATE, false);
@@ -108,6 +116,25 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             mEdgeSwitch.setChecked(true);
         } else {
             mEdgeSwitch.setChecked(false);
+        }
+
+
+        // Initialize Ads on if it's not in tutorial mode
+        // Toggle AdView UI visibility for better visual experience
+        if (!mIsTutorialMode) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    mAdView.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onAdFailedToLoad(int i) {
+                    mAdView.setVisibility(View.GONE);
+                }
+            });
         }
     }
 
@@ -137,7 +164,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-
 
     /**
      * Activates the Edge Screen
@@ -193,6 +219,18 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Enable Edge Screen if the permissions are granted
+        if (mIsTutorialMode && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && Settings.canDrawOverlays(this)) {
+            mEdgeSwitch.setChecked(true);
+            enableEdge();
+        }
+
+        // If the edge switch is previously enabled in tutorial then apply that state
+        if (mSharedPreferences.getBoolean(Constants.PREF_EDGE_SWITCH_STATE, false)) {
+            mEdgeSwitch.setChecked(true);
+        }
 
         // Checks to see if the permission is granted or denied
         if (mEdgeSwitch.isChecked()) {

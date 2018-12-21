@@ -91,7 +91,7 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         mDisplayWidth = displayMetrics.widthPixels;
 
-        // Cache the short/medium animation time for animating views
+        // Cache the short animation time for animating views
         cShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
         // Set the navigation bar color to grey
@@ -184,7 +184,7 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
             mIsCroppedOrRotated = false;
         }
 
-        // If there is text inside the text cache; display it
+        // If there is text inside the text cache; display it rather than extracting it from scratch
         if (cTextCache != null && !cTextCache.matches("")) {
             mExtractedText = cTextCache;
             showExtractedTextDialog(mExtractedText);
@@ -456,7 +456,6 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
             int lastIndex = mCapturedFilePath.lastIndexOf("/");
             filePath = filePath.substring(0, lastIndex);
             File file = new File(filePath);
-            boolean isDeleted = false;
 
             /*
              * Code adapted from https://stackoverflow.com/questions/4943629/how-to-delete-a-whole-folder-and-content
@@ -465,15 +464,8 @@ public class ExtractActivity extends AppCompatActivity implements View.OnClickLi
                 String[] children = file.list();
 
                 for (String child: children) {
-                    isDeleted = new File(file, child).delete();
+                    new File(file, child).delete();
                 }
-            }
-
-            // TODO: Should be deleted after the application is complete
-            if (isDeleted) {
-                Toast.makeText(this, "Files Successfully Deleted", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "File Deletion Failed", Toast.LENGTH_SHORT).show();
             }
         }
     }

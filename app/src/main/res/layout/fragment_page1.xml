@@ -9,7 +9,6 @@
     tools:context=".tutorials.Page1Fragment">
 
     <ImageView
-        android:id="@+id/iv_tutorial_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -37,7 +36,6 @@
             android:text="@string/tr_title_1" />
 
         <TextView
-            android:id="@+id/tv_tutorial_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

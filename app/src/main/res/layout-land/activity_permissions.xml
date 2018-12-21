@@ -20,7 +20,6 @@
             android:background="@android:color/holo_blue_dark" />
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

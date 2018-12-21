@@ -14,15 +14,17 @@ public class AboutActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+            getWindow().setNavigationBarColor(getColor(R.color.colorPrimaryDark));
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().setStatusBarColor(getColor(R.color.colorPrimaryDark));
+        } else {
+            getWindow().setStatusBarColor(getResources().getColor(android.R.color.black));
         }
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-        getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 }

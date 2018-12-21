@@ -1,6 +1,5 @@
 package arunkbabu90.lexicon.widget;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
@@ -8,9 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 
-import arunkbabu90.lexicon.Constants;
 import arunkbabu90.lexicon.R;
-import arunkbabu90.lexicon.activities.SavedTextActivity;
 
 /**
  * Implementation of App Widget functionality.
@@ -68,4 +65,3 @@ public class SavedTextsProvider extends AppWidgetProvider
         // Enter relevant functionality for when the last widget is disabled
     }
 }
-

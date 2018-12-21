@@ -20,7 +20,7 @@ public class SavedTextActivity extends AppCompatActivity
         if (getSupportActionBar() != null) getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 
         // Make the navigation bar white and icons grey on Oreo and above
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
             getWindow().setNavigationBarColor(getColor(R.color.colorPrimaryDark));
         }
@@ -29,6 +29,8 @@ public class SavedTextActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             getWindow().setStatusBarColor(getColor(R.color.colorPrimaryDark));
+        } else {
+            getWindow().setStatusBarColor(getResources().getColor(android.R.color.black));
         }
     }
 }

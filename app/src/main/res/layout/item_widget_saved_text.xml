@@ -6,5 +6,6 @@
     android:layout_height="match_parent"
     android:padding="8dp"
     android:maxLines="1"
+    android:textColor="@android:color/white"
     android:ellipsize="end"
     android:fontFamily="sans-serif"/>

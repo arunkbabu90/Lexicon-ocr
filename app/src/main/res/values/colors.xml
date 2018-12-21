@@ -11,10 +11,7 @@
     <color name="colorGreyedText">#616161</color>
     <color name="colorDisabled">#BDBDBD</color>
     <color name="vibrantGreen">#00e676</color>
-    <color name="lightBlue">#42a5f5</color>
     <color name="vibrantBlue">#2979ff</color>
-    <color name="vibrantRed">#ff1744</color>
     <color name="vibrantYellow">#FFEF68</color>
     <color name="vibrantAmber">#ffc400</color>
-    <color name="vibrantOrange">#ff9100</color>
 </resources>
